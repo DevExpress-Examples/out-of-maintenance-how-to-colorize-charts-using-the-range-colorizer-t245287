@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+        x:Class="RangeColorizerExample.MainWindow"
+        Title="MainWindow" Height="720" Width="1280">
+
+    <Window.Resources>
+        <XmlDataProvider x:Key="dataProvider" Source="Data/HPI.xml"/>
+    </Window.Resources>
+
+    <Grid DataContext="{Binding Source={StaticResource dataProvider}}">
+        <dxc:ChartControl>
+            <dxc:ChartControl.Titles>
+                <dxc:Title Content="GDP for G20" HorizontalAlignment="Center"/>
+            </dxc:ChartControl.Titles>
+            <dxc:ChartControl.Legend>
+                <dxc:Legend HorizontalPosition="Center" Orientation="Horizontal"/>
+            </dxc:ChartControl.Legend>
+            <dxc:XYDiagram2D>
+                <dxc:BarSideBySideSeries2D DisplayName="GDP" 
+                                           DataSource="{Binding XPath=/G20HPIs/CountryStatistics}"
+                                           ArgumentDataMember="Country" 
+                                           ValueDataMember="Product"
+                                           ColorDataMember="HPI">
+                    <dxc:BarSideBySideSeries2D.Colorizer>
+                        <dxc:RangeColorizer RangeStops="22 30 38 46 54 64" LegendTextPattern="{}{V1} - {V2} HPI">
+                            <dxc:RangeColorizer.Palette>
+                                <dxc:CustomPalette>
+                                    <dxc:CustomPalette.Colors>
+                                        <Color A="255" R="255" G="90" B="25"/>
+                                        <Color A="255" R="229" G="227" B="53"/>
+                                        <Color A="255" R="110" G="201" B="92"/>
+                                    </dxc:CustomPalette.Colors>
+                                </dxc:CustomPalette>
+                            </dxc:RangeColorizer.Palette>
+                        </dxc:RangeColorizer>
+                    </dxc:BarSideBySideSeries2D.Colorizer>
+                </dxc:BarSideBySideSeries2D>
+            </dxc:XYDiagram2D>
+        </dxc:ChartControl>
+    </Grid>
+</Window>
