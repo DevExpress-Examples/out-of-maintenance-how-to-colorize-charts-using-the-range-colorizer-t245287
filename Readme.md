@@ -1,3 +1,8 @@
+<!-- default file list -->
+*Files to look at*:
+
+* **[MainWindow.xaml](./CS/RangeColorizerExample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/RangeColorizerExample/MainWindow.xaml))**
+<!-- default file list end -->
 # How to colorize charts using the Range Colorizer
 
 
